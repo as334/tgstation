@@ -129,6 +129,14 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/g
 	name = "Pluoxium"
 	fusion_power = 10
 
+/datum/gas/plasmanimus
+	id = "plasmanimus"
+	specific_heat = 500
+	name = "Animated Plasma"
+	//gas_overlay = "plasmanimus"
+	//moles_visible = 1
+	dangerous = TRUE
+
 /obj/effect/overlay/gas
 	icon = 'icons/effects/tile_effects.dmi'
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

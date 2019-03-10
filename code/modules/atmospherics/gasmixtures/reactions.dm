@@ -459,3 +459,41 @@
 	//Possibly burning a bit of organic matter through maillard reaction, so a *tiny* bit more heat would be understandable
 	air.temperature += cleaned_air * 0.002
 	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, cleaned_air*MIASMA_RESEARCH_AMOUNT)//Turns out the burning of miasma is kinda interesting to scientists
+
+/datum/gas_reaction/stim_ball
+	priority = 7
+	name "Stimulum Energy Ball"
+	id = "stimball"
+
+/datum/gas_reaction/stim_ball/init_reqs()
+	min_requirements = list(
+		/datum/gas/pluoxium = STIM_BALL_GAS_AMOUNT,
+		/datum/gas/stimulum = STIM_BALL_GAS_AMOUNT,
+		/datum/gas/nitryl = 1,
+		/datum/gas/plasma = MINIMUM_MOLE_COUNT,
+		"TEMP" = FIRE_MINIMUM_TEMPERATURE_TO_EXIST
+	)
+
+/datum/gas_reaction/stim_ball/react(/datum/gas_mixture/air, datum/holder)
+	var/list/cached_gases = air.gases
+	var/turf/open/location
+	if (istype(holder,/datum/pipeline)) //Find the tile the reaction is occuring on, or a random part of the network if it's a pipenet.
+		var/datum/pipeline/fusion_pipenet = holder
+		location = get_turf(pick(fusion_pipenet.members))
+	else
+		location = get_turf(holder)
+	air.assert_gases(/datum/gas/water_vapor,/datum/gas/nitryl,/datum/gas/carbon_dioxide,/datum/gas/nitrogen)
+	var/ball_shot_angle = 180*cos(cached_gases[/datum/gas/water_vapor][MOLES]/cached_gases[/datum/gas/nitryl][MOLES])+180
+	var/stim_used = STIM_BALL_GAS_AMOUNT/cached_gases[/datum/gas/plasma][MOLES]
+	var/pluox_used = STIM_BALL_GAST_AMOUNT/cached_gases[/datum/gas/plasma][MOLES]
+	var/energy_released = stim_used*STIMULUM_HEAT_SCALE//Stimulum has a lot of stored energy, and breaking it up releases some of it
+	location.fire_nuclear_particle(ball_shot_angle)
+	cached_gases[/datum/gas/carbon_dioxide][MOLES] += 4*pluox_used
+	cached_gases[/datum/gas/nitrogen][MOLES] += 8*stim_used
+	cached_gases[/datum/gas/pluoxium][MOLES] -= pluox_used
+	cached_gases[/datum/gas/stimulum][MOLES] -= stim_used
+	if(energy_released)
+		var/new_heat_capacity = air.heat_capacity()
+		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
+			air.temperature = (air.temperature*old_heat_capacity + energy_released)/new_heat_capacity
+		return REACTING

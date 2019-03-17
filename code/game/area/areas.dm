@@ -50,6 +50,7 @@
 
 	var/no_air = null
 
+	var/thraxxium_crystal_state_change = 0
 	var/parallax_movedir = 0
 
 	var/global/global_uid = 0

@@ -1536,6 +1536,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		for(var/i in 1 to items_list[each_item])
 			new each_item(where_to)
 
+
 //sends a message to chat
 //config_setting should be one of the following
 //null - noop

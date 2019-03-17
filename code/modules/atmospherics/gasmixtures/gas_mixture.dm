@@ -112,6 +112,12 @@ GLOBAL_LIST_INIT(gaslist_cache, init_gaslist_cache())
 /datum/gas_mixture/proc/thermal_energy() //joules
 	return THERMAL_ENERGY(src) //see code/__DEFINES/atmospherics.dm; use the define in performance critical areas
 
+/datum/gas_mixture/proc/gas_power() //Unitless
+	. = 0
+	var/cached_gases = gases
+	for (var/gas_id in cached_gases)
+		. += (cached_gases[gas_id][GAS_META][META_GAS_FUSION_POWER]*cached_gases[gas_id][MOLES])
+
 /datum/gas_mixture/proc/archive()
 	//Update archived versions of variables
 	//Returns: 1 in all cases

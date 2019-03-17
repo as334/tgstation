@@ -78,7 +78,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance
 	ambientsounds = MAINTENANCE
 	valid_territory = FALSE
-
+	thraxxium_crystal_state_change = 40
 
 //Departments
 
@@ -133,6 +133,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/department/science
 	name = "Science Maintenance"
 	icon_state = "maint_sci"
+	thraxxium_crystal_state_change = 60
 
 /area/maintenance/department/science/central
 	name = "Central Science Maintenance"
@@ -149,6 +150,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/department/engine
 	name = "Engineering Maintenance"
 	icon_state = "maint_engi"
+	thraxxium_crystal_state_change = 100
 
 /area/maintenance/department/science/xenobiology
 	name = "Xenobiology Maintenance"
@@ -201,6 +203,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/starboard/aft/secondary
 	name = "Secondary Starboard Quarter Maintenance"
 	icon_state = "asmaint_2"
+	thraxxium_crystal_state_change = 1000
 
 /area/maintenance/starboard/fore
 	name = "Starboard Bow Maintenance"
@@ -248,10 +251,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/primary/port
 	name = "Port Primary Hallway"
 	icon_state = "hallP"
+	thraxxium_crystal_state_change = 50
 
 /area/hallway/primary/central
 	name = "Central Primary Hallway"
 	icon_state = "hallC"
+	thraxxium_crystal_state_change = 20
 
 /area/hallway/secondary/command
 	name = "Command Hallway"
@@ -268,6 +273,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/exit/departure_lounge
 	name = "Departure Lounge"
 	icon_state = "escape_lounge"
+	thraxxium_crystal_state_change = 2000
 
 /area/hallway/secondary/entry
 	name = "Arrival Shuttle Hallway"
@@ -283,6 +289,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Bridge"
 	icon_state = "bridge"
 	ambientsounds = list('sound/ambience/signal.ogg')
+	thraxxium_crystal_state_change = 100
 
 /area/bridge/meeting_room
 	name = "Heads of Staff Meeting Room"
@@ -307,10 +314,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/heads/chief
 	name = "Chief Engineer's Office"
 	icon_state = "ce_office"
+	thraxxium_crystal_state_change = 10
 
 /area/crew_quarters/heads/cmo
 	name = "Chief Medical Officer's Office"
 	icon_state = "cmo_office"
+	thraxxium_crystal_state_change = 1000
 
 /area/crew_quarters/heads/hop
 	name = "Head of Personnel's Office"
@@ -323,6 +332,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/heads/hor
 	name = "Research Director's Office"
 	icon_state = "rd_office"
+	thraxxium_crystal_state_change = -1000
 
 /area/comms
 	name = "Communications Relay"
@@ -342,6 +352,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/toilet
 	name = "Dormitory Toilets"
 	icon_state = "toilet"
+	thraxxium_crystal_state_change = 75
 
 /area/crew_quarters/toilet/auxiliary
 	name = "Auxiliary Restrooms"
@@ -382,6 +393,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/kitchen
 	name = "Kitchen"
 	icon_state = "kitchen"
+	thraxxium_crystal_state_change = 20
 
 /area/crew_quarters/kitchen/coldroom
 	name = "Kitchen Cold Room"
@@ -409,6 +421,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/theatre
 	name = "Theatre"
 	icon_state = "Theatre"
+	thraxxium_crystal_state_change = 10000
 
 /area/crew_quarters/theatre/abandoned
 	name = "Abandoned Theatre"
@@ -418,6 +431,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Library"
 	icon_state = "library"
 	flags_1 = NONE
+	thraxxium_crystal_state_change = 300
 
 /area/library/lounge
 	name = "Library Lounge"
@@ -434,6 +448,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	flags_1 = NONE
 	clockwork_warp_allowed = FALSE
 	clockwork_warp_fail = "The consecration here prevents you from warping in."
+	thraxxium_crystal_state_change = -10000
 
 /area/chapel/main
 	name = "Chapel"
@@ -465,6 +480,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/engine
 	ambientsounds = ENGINEERING
+	thraxxium_crystal_state_change = 50
 
 /area/engine/engine_smes
 	name = "Engineering SMES"
@@ -478,6 +494,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Atmospherics"
 	icon_state = "atmos"
 	flags_1 = NONE
+	thraxxium_crystal_state_change = 100
 
 /area/engine/atmospherics_engine
 	name = "Atmospherics Engine"
@@ -496,6 +513,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "grav_gen"
 	clockwork_warp_allowed = FALSE
 	clockwork_warp_fail = "The gravitons generated here could throw off your warp's destination and possibly throw you into deep space."
+	thraxxium_crystal_state_change = 300
 
 /area/engine/storage
 	name = "Engineering Storage"
@@ -539,6 +557,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/solar/starboard
 	name = "Starboard Solar Array"
 	icon_state = "panelsS"
+	thraxxium_crystal_state_change = 80
 
 /area/solar/starboard/aft
 	name = "Starboard Quarter Solar Array"
@@ -597,11 +616,13 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Teleporter Room"
 	icon_state = "teleporter"
 	ambientsounds = ENGINEERING
+	thraxxium_crystal_state_change = 300
 
 /area/gateway
 	name = "Gateway"
 	icon_state = "gateway"
 	ambientsounds = ENGINEERING
+	thraxxium_crystal_state_change = 400
 
 //MedBay
 
@@ -622,6 +643,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/medical/medbay/lobby
 	name = "Medbay Lobby"
 	icon_state = "medbay"
+	thraxxium_crystal_state_change = 1
 
 	//Medbay is a large area, these additional areas help level out APC load.
 
@@ -694,7 +716,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Security"
 	icon_state = "security"
 	ambientsounds = HIGHSEC
-
+	thraxxium_crystal_state_change = -10
 /area/security/main
 	name = "Security Office"
 	icon_state = "security"
@@ -852,6 +874,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/science
 	name = "Science Division"
 	icon_state = "toxlab"
+	thraxxium_crystal_state_change = 100
 
 /area/science/lab
 	name = "Research and Development"
@@ -873,6 +896,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/science/mixing
 	name = "Toxins Mixing Lab"
 	icon_state = "toxmix"
+	thraxxium_crystal_state_change = 300
 
 /area/science/mixing/chamber
 	name = "Toxins Mixing Chamber"
@@ -932,6 +956,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/storage/art
 	name = "Art Supply Storage"
 	icon_state = "storage"
+	thraxxium_crystal_state_change = -10
 
 /area/storage/tcom
 	name = "Telecomms Storage"
@@ -1038,6 +1063,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/ai_monitored/turret_protected/aisat/hallway
 	name = "AI Satellite Hallway"
 	icon_state = "ai"
+	thraxxium_crystal_state_change = 200
 
 /area/aisat
 	name = "AI Satellite Exterior"

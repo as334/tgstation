@@ -137,7 +137,7 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/g
 	specific_heat = 5
 	name = "Stimulum"
 	fusion_power = 7
-	rarity = 1
+	rarity = 50
 
 /datum/gas/pluoxium
 	id = "pluox"
@@ -153,6 +153,14 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/g
 	gas_overlay = "miasma"
 	moles_visible = MOLES_GAS_VISIBLE * 60
 	rarity = 250
+
+/datum/gas/thraxxium
+	id = "thraxx"
+	specific_heat = 100
+	name = "Thraxxium"
+	gas_overlay = "miasma_old" //Probably needs a better sprite
+	moles_visible = MOLES_GAS_VISIBLE
+	rarity = 10
 
 /obj/effect/overlay/gas
 	icon = 'icons/effects/atmospherics.dmi'

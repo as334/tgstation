@@ -1,6 +1,7 @@
 
 /obj/item/thraxx_crystal
 	name = "thraxxium crystal"
+	icon_state = "thraxxcrystal"
 	//Needs icons and a whole lot of other shit
 	var/size = 1
 	var/stored_energy = 0
@@ -138,6 +139,7 @@
 		. += air_contents.return_pressure() * state_weights_internal["pressure"]
 		. += air_contents.gas_power() * state_weights_internal["gas_power"]
 		. += air_contents.total_moles() * state_weights_internal["moles"]
+		. += stored_energy * state_weights_internal["stored_energy"]
 	var/turf/open/location = get_turf(src)
 	if(location) //External state calculation
 		var/datum/gas_mixture/tile_air = location.return_air()
@@ -155,4 +157,6 @@
 		. += location.get_lumcount() * state_weights_external["lighting"]
 		. += GLOB.dead_mob_list.len * state_weights_external["ectoplasm"]
 
-
+/obj/item/thraxx_crystal/rad_act(amount)
+	. = ..()
+	stored_energy += amount

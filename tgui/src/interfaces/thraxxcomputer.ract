@@ -1,0 +1,57 @@
+<ui-display title='Crystal Analysis'>
+	{{#if data.hasCrystal}}
+		<ui-button icon='eject' style='null' action='eject' params = '{"eject" : "crystal"}'>Eject</ui-button>
+		<ui-section label='Pressure'>
+			{{Math.round(adata.pressure)}} kPa
+		</ui-section>
+		<ui-section label='Temperature'>
+			{{Math.round(adata.temperature)}} K
+		</ui-section>
+		<ui-section label='State Potential'>
+			{{Math.round(adata.state)}} 
+		</ui-section>
+		<ui-section label='Stored Lattice Energy'>
+			{{Math.round(adata.stored_energy)}} 
+		</ui-section>
+		{{#if data.gas_data}}
+			<ui-section label='Gas Contents'>
+			{{#each data.gas_data}}
+				{{name}} {{Math.fixed(data.amount,2)}} moles
+			{{/each}}
+			</ui-section>
+		{{/if}}
+	{{else}}
+		<ui-section>
+			<span class='average'>No Crystal Inserted</span>
+		</ui-section>
+	{{/if}}
+	
+</ui-display>
+
+<ui-display title = 'Transfer Pump'>
+  <ui-section label='Power'>
+    <ui-button icon='{{data.on ? "power-off" : "close"}}' style='{{data.on ? "selected" : null}}'
+      action='power'>{{data.on ? "On" : "Off"}}</ui-button>
+  </ui-section>
+  <ui-section label='Output Pressure'>
+	<ui-button icon='pencil' action='pressure' params='{"pressure": "input"}'>Set</ui-button>
+    <ui-button icon='plus' state='{{data.pumpPressure == data.max_pumpPressure ? "disabled" : null}}' action='pressure' params='{"pressure": "max"}'>Max</ui-button>
+    <span>{{Math.round(adata.pumpPressure)}} kPa</span>
+  </ui-section>
+</ui-display>
+
+<ui-display title='Gas Exchange Tank'>
+  {{#if data.hasTank}}
+		<ui-button icon='eject' style='null' action='eject' params = '{"eject" : "tank"}'>Eject</ui-button>
+		<ui-section label='Label'>
+			{{data.tank.name}}
+		</ui-section>
+		<ui-section label='Pressure'>
+			{{Math.round(adata.tank.tankPressure)}} kPa
+		</ui-section>
+	{{else}}
+		<ui-section>
+			<span class='average'>No Holding Tank</span>
+		</ui-section>
+	{{/if}}
+</ui-display>

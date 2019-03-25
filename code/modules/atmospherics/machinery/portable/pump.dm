@@ -153,3 +153,5 @@
 				replace_tank(usr, FALSE)
 				. = TRUE
 	update_icon()
+#undef PUMP_OUT
+#undef PUMP_IN

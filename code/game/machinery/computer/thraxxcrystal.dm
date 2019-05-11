@@ -19,12 +19,14 @@
 			return
 		crystal = insert_crystal
 		updateUsrDialog()
+		return
 	else if(istype(O, /obj/item/tank))
 		var/obj/item/tank/insert_tank = O
 		if (!user.transferItemToLoc(insert_tank,src))
 			return
 		tank = insert_tank
 		updateUsrDialog()
+		return
 	return ..()
 
 obj/machinery/computer/thraxxcrystal/Initialize()

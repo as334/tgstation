@@ -24,6 +24,13 @@
 	CanAtmosPass = ATMOS_PASS_NO
 	timeleft = 200
 
+
+/obj/effect/forcefield/thraxxium
+	desc = "A purple, unpassable obstruction in space."
+	name = "Crystal Force Barrier"
+	icon_state = "shield_purple"
+	timeleft = 50
+
 ///////////Mimewalls///////////
 
 /obj/effect/forcefield/mime
@@ -35,3 +42,4 @@
 	name = "invisible blockade"
 	desc = "You're gonna be here awhile."
 	timeleft = 600
+

@@ -154,6 +154,16 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/g
 	moles_visible = MOLES_GAS_VISIBLE * 60
 	rarity = 250
 
+/datum/gas/strangelet_vapour
+	id = "strange"
+	specific_heat = 5000
+	name = "Strangelet Vapour"
+	dangerous = TRUE
+	gas_overlay = "stranglet_vapour"
+	moles_visible = MOLES_GAS_VISIBLE
+	fusion_power = -50
+	rarity = 20
+
 /obj/effect/overlay/gas
 	icon = 'icons/effects/atmospherics.dmi'
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

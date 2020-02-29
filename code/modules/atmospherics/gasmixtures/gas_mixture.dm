@@ -404,13 +404,13 @@ GLOBAL_LIST_INIT(gaslist_cache, init_gaslist_cache())
 
 	return ""
 
-/datum/gas_mixture/react(datum/holder)
+/datum/gas_mixture/react(datum/holder, list/reaction_list = SSair.gas_reactions)
 	. = NO_REACTION
 	var/list/cached_gases = gases
 	if(!length(cached_gases))
 		return
 	var/list/reactions = list()
-	for(var/datum/gas_reaction/G in SSair.gas_reactions)
+	for(var/datum/gas_reaction/G in reaction_list)
 		if(cached_gases[G.major_gas])
 			reactions += G
 	if(!length(reactions))

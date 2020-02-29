@@ -98,7 +98,7 @@
 
 	var/list/breath_gases = breath.gases
 
-	breath.assert_gases(/datum/gas/oxygen, /datum/gas/plasma, /datum/gas/carbon_dioxide, /datum/gas/nitrous_oxide, /datum/gas/bz, /datum/gas/nitrogen, /datum/gas/tritium, /datum/gas/nitryl, /datum/gas/pluoxium, /datum/gas/stimulum)
+	breath.assert_gases(/datum/gas/oxygen, /datum/gas/plasma, /datum/gas/carbon_dioxide, /datum/gas/nitrous_oxide, /datum/gas/bz, /datum/gas/nitrogen, /datum/gas/tritium, /datum/gas/nitryl, /datum/gas/pluoxium, /datum/gas/stimulum, /datum/gas/strangelet_vapour)
 
 	//Partial pressures in our breath
 	var/O2_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/oxygen][MOLES])+(8*breath.get_breath_partial_pressure(breath_gases[/datum/gas/pluoxium][MOLES]))
@@ -343,6 +343,13 @@
 		// Clear out moods when no miasma at all
 		else
 			SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "smell")
+	// Strangelet Vapour, toxic and radioactive
+		var/strange_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/strangelet_vapour][MOLES])
+		gas_breathed = breath_gases[/datum/gas/strangelet_vapour][MOLES]
+		H.radation += strange_pp/5
+		H.adjustToxLoss(strange_pp/10)
+		breath_gases[/datum/gas/strangelet_vapour][MOLES] -= gas_breathed
+
 
 		handle_breath_temperature(breath, H)
 		breath.garbage_collect()

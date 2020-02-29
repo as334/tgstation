@@ -23,6 +23,8 @@ SUBSYSTEM_DEF(air)
 
 	//atmos singletons
 	var/list/gas_reactions = list()
+	var/list/gas_rad_reactions = list()
+	var/list/gas_nuke_ball_reactions = list()
 	var/list/atmos_gen
 
 	//Special functions lists
@@ -61,7 +63,6 @@ SUBSYSTEM_DEF(air)
 	setup_allturfs()
 	setup_atmos_machinery()
 	setup_pipenets()
-	gas_reactions = init_gas_reactions()
 	return ..()
 
 
@@ -397,3 +398,8 @@ SUBSYSTEM_DEF(air)
 		return gas_string
 	var/datum/atmosphere/mix = atmos_gen[gas_string]
 	return mix.gas_string
+
+/datum/controller/subsystem/air/proc/setup_reactions()
+	gas_reactions = init_gas_reactions()
+	gas_rad_reactions = init_gas_rad_reactions()
+	gas_nuke_ball_reactions = init_gas_nuke_ball_reactions()

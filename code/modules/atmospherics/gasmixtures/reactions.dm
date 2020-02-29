@@ -523,3 +523,56 @@
 		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
 			air.temperature = CLAMP((air.temperature*old_heat_capacity + energy_released)/new_heat_capacity,TCMB,INFINITY)
 		return REACTING
+
+/datum/gas_reaction/strangelet_conversion
+	priority = 14
+	name = "Stranglet Conversion"
+	id = "strangeconversion"
+
+/datum/gas_reaction/strangelet_conversion/init_reqs()
+	min_requirements = list(
+		/datun/gas/strangelet_vapour = MINIMUM_MOLE_COUNT,
+		"TEMP" = 50
+	)
+/datum/gas_reaction/strangelet_conversion/react(datum/gas_mixture/air, datum/holder)
+	var/list/cached_gases = air.gases
+	var/old_thermal_energy = air.thermal_energy()
+	var/strangelet_amount = cached_gases[/datum/gas/strangelet_vapour][MOLES]
+	var/conversion_ratio = max(-0.000004*(air.temperature-50)*(air.temperature-1000),0)
+	var/gas_converted = strangelet_amount*conversion_ratio
+	if(gas_converted > 0)
+
+		cached_gases[/datum/gas/strangelet_vapour][MOLES] = 0 //We want to exclude the strange matter itself when removing the gas to be converted
+		air.remove(gas_converted)
+		cached_gases[/datum/gas/strangelet_vapour][MOLES] = strangelet_amount + gas_converted
+		var/new_heat_capacity = air.heat_capacity()
+		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
+			air.temperature = CLAMP(old_thermal_energy * new_heat_capacity, TCMB, INFINITY)
+		return REACTING
+
+/datum/gas_reaction/strangelet_decay
+	priority = 13
+	name = "Strangelet Decay"
+	id = "strangedecay"
+
+/datum/gas_reaction/strangelet_decay/init_reqs()
+	min_requirements = list(
+		/datum/gas/strangelet_vapour = MINIMUM_MOLE_COUNT,
+		"TEMP" = 1000
+	)
+/datum/gas_reaction/strangelet_decay/react(datum/gas_mixture/air, datum/holder)
+	var/list/cached_gases = air.gases
+	var/old_thermal_energy = air.thermal_energy()
+	var/decay_percentage = min(0.000001*(air.temperature-1000),0.1)
+	var/gas_decayed = decay_percentage*cached_gases[/datum/gas/strangelet_vapour][MOLES]
+	if(gas_decayed > 0)
+		var/list/gas_types = subtypesof(/datum/gas)
+		for(var/gas_type in gas_types)
+			air.assert_gas(gas_type)
+			cached_gases[gas_type][MOLES] += gas_decayed/gas_types.len
+		var/new_heat_capacity = air.heat_capacity()
+		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
+			air.temperature = CLAMP(old_thermal_energy * new_heat_capacity, TCMB, INFINITY)
+		return REACTING
+
+

@@ -63,6 +63,7 @@ SUBSYSTEM_DEF(air)
 	setup_allturfs()
 	setup_atmos_machinery()
 	setup_pipenets()
+	setup_reactions()
 	return ..()
 
 
@@ -401,5 +402,5 @@ SUBSYSTEM_DEF(air)
 
 /datum/controller/subsystem/air/proc/setup_reactions()
 	gas_reactions = init_gas_reactions()
-	gas_rad_reactions = init_gas_rad_reactions()
-	gas_nuke_ball_reactions = init_gas_nuke_ball_reactions()
+	gas_rad_reactions = init_rad_gas_reactions()
+	gas_nuke_ball_reactions = init_nuke_ball_gas_reactions()

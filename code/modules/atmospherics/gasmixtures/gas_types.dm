@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/g
 	specific_heat = 5000
 	name = "Strangelet Vapour"
 	dangerous = TRUE
-	gas_overlay = "stranglet_vapour"
+	gas_overlay = "strangelet_vapour"
 	moles_visible = MOLES_GAS_VISIBLE
 	fusion_power = -50
 	rarity = 20

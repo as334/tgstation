@@ -147,6 +147,11 @@
 	gas_type = /datum/gas/miasma
 	filled = 1
 
+/obj/machinery/portable_atmospherics/canister/strangelet_vapour
+	name = "strangelet vapour canister"
+	desc = "Strangelet Vapour. A highly dangerous form of exotic matter."
+	gas_type = /datum/gas/strangelet_vapour
+
 /obj/machinery/portable_atmospherics/canister/fusion_test
 	name = "fusion test canister"
 	desc = "Don't be a badmin."
@@ -157,6 +162,28 @@
 	air_contents.gases[/datum/gas/plasma][MOLES] = 500
 	air_contents.gases[/datum/gas/tritium][MOLES] = 350
 	air_contents.temperature = 15000
+
+/obj/machinery/portable_atmospherics/canister/stim_ball_test
+	name = "stim ball test canister"
+	desc = "Debug canister, do not spawn in game."
+
+/obj/machinery/portable_atmospherics/canister/stim_ball_test/create_gas()
+	air_contents.add_gases(/datum/gas/plasma, /datum/gas/stimulum, /datum/gas/nitryl, /datum/gas/pluoxium)
+	air_contents.gases[/datum/gas/plasma][MOLES] = 1
+	air_contents.gases[/datum/gas/nitryl][MOLES] = 1
+	air_contents.gases[/datum/gas/stimulum][MOLES] = STIM_BALL_GAS_AMOUNT*2
+	air_contents.gases[/datum/gas/pluoxium][MOLES] = STIM_BALL_GAS_AMOUNT*2
+
+/obj/machinery/portable_atmospherics/canister/teleport_test
+	name = "strangelet vapour teleport test"
+	desc = "Debug canister, do not spawn in game."
+
+/obj/machinery/portable_atmospherics/canister/teleport_test/create_gas()
+	air_contents.add_gases(/datum/gas/strangelet_vapour,/datum/gas/bz,/datum/gas/plasma)
+	air_contents.gases[/datum/gas/plasma][MOLES] = 10
+	air_contents.gases[/datum/gas/bz][MOLES] = 200
+	air_contents.gases[/datum/gas/strangelet_vapour][MOLES] = 400
+	air_contents.temperature = 50
 
 /obj/machinery/portable_atmospherics/canister/proc/get_time_left()
 	if(timing)

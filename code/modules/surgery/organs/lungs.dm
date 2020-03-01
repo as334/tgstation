@@ -346,7 +346,7 @@
 	// Strangelet Vapour, toxic and radioactive
 		var/strange_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/strangelet_vapour][MOLES])
 		gas_breathed = breath_gases[/datum/gas/strangelet_vapour][MOLES]
-		H.radation += strange_pp/5
+		H.radiation += strange_pp/5
 		H.adjustToxLoss(strange_pp/10)
 		breath_gases[/datum/gas/strangelet_vapour][MOLES] -= gas_breathed
 

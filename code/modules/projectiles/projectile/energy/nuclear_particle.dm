@@ -26,9 +26,10 @@
 
 /obj/projectile/energy/nuclear_particle/Move()
 	. = ..()
-	var/turf/location = get_turf(src)
-	if(location && location.air)
-		location.air.react(location,gas_nuke_ball_reactions)
+	var/turf/T = get_turf(src)
+	if(T && isopenturf(T))
+		var/turf/open/location = T
+		location.air.react(location,SSair.gas_nuke_ball_reactions)
 
 
 /atom/proc/fire_nuclear_particle(angle = rand(0,360)) //used by fusion to fire random nuclear particles. Fires one particle in a random direction.
